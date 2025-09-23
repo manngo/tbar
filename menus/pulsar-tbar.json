@@ -1,0 +1,26 @@
+{
+  "context-menu": {
+    "atom-text-editor": [
+      {
+        "label": "Toggle pulsar-tbar",
+        "command": "pulsar-tbar:toggle"
+      }
+    ]
+  },
+  "menu": [
+    {
+      "label": "Packages",
+      "submenu": [
+        {
+          "label": "pulsar-tbar",
+          "submenu": [
+            {
+              "label": "Toggle",
+              "command": "pulsar-tbar:toggle"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
