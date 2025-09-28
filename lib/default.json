@@ -1,0 +1,14 @@
+{
+	"buttons": [
+		{
+			"label": "init.js",
+			"action": "file:///Users/mark/.pulsar/init.js",
+			"tooltip": "file:///Users/mark/.pulsar/init.js"
+		},
+		{
+			"label": "Internotes",
+			"action": "https://internotes.net/",
+			"tooltip": "Open https://internotes.net/"
+		}
+	]
+}

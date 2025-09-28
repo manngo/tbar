@@ -1,0 +1,371 @@
+/*	TBar
+	================================================
+	div#pulsar-tbar
+		div#pulsar-tbar-menu
+			button#pulsar-tbar-menu-toggle
+			div
+		div#pulsar-tbar-items
+			button
+	================================================ */
+
+	div#pulsar-tbar {
+		--highlight: #3478F6;;
+		&>* {
+			display: inline-block;
+		}
+		&>div#pulsar-tbar-menu {
+			display: inline-block;
+			outline: none;
+		}
+		&>div#pulsar-tbar-items {
+			display: inline;
+		}
+
+		background-color: #ddd;
+		padding: 2px 0 4px;
+
+	/*	Buttons
+		================================================ */
+
+		button {
+			cursor: default;
+			&:before { }
+			&[data-save] {
+				background-color: transparent;
+				border: none;
+				margin: 1px 0px;
+				padding: 2px 8px;
+				white-space: nowrap;
+				&:not(:last-of-type) {
+					border-right: thin solid #999;
+				}
+				&.dragging {
+					opacity: 0.3;
+				}
+				&:active {
+					opacity: 0.1;
+				}
+			}
+			&[data-action^="http://"]:before,
+			&[data-action^="https://"]:before {
+				font-family: FontAwesome;
+				content: "\F08E\A0";
+				color: var(--highlight);
+			}
+			&[data-action^="file://"]:before {
+				font-family: FontAwesome;
+				content: "\F15B\A0";
+				color: var(--highlight);
+			}
+			&span[contenteditable="true"],
+			&span[contenteditable="plaintext-only"] {
+				outline:  thick solid pink;
+				background-color: white;
+			}
+			&:hover {
+				background-color: white;
+			}
+		}
+
+	/*	TBar Menu
+		================================================ */
+
+		div#pulsar-tbar-menu {
+			display: inline-block;
+			position: relative;
+			cursor: default;
+			&>button {
+				border: none;
+				margin-right: 8px;
+				background-color: transparent;
+				font-weight: bold;
+				font-size: 1.2em;
+				white-space: pre;
+				&#pulsar-tbar-menu-toggle.open+div {
+					display: block;
+				}
+			}
+			&>div {
+				background: white;
+				position: absolute;
+				z-index: 100;
+				border: thin solid #ccc;
+				box-shadow: 1px 1px 2px #999;
+				display: none;
+				cursor: default;
+				font-size: 1.1em;
+
+	/*	TBar Menu Items
+		================================================ */
+
+				&>button {
+					qwidth: 8em;
+					width: 100%;
+					background: white;
+					border: none;
+					text-align: left;
+					font-size: 1em;
+					padding: 0.25em 0.75em;
+					white-space: nowrap;
+					cursor: default;
+					&:hover {
+						background: var(--highlight);
+						color: white;
+					}
+				}
+				&>hr {
+					height: 0.5em;
+					text-align: center;
+					cursor: default;
+					border-top: thin solid #ccc;
+					qheight: 2px;
+					margin: 0.375em 0.5em 0.125em;
+				}
+			}
+		}
+
+	}
+
+/*	Finder
+	================================================
+	atom-panel
+		div#pulsar-tbar-finder.native-key-bindings
+			form
+				input[name="filter"][type="text"]
+				ul#commands
+					li …
+				span#command
+					input[type="text"][name="display-name"]
+					input[type="text"][name="name"][readonly]
+				button[name="cancel"]
+				button[name="ok"]
+	================================================ */
+
+	div#pulsar-tbar-finder {
+		background-color: #eee;
+		&>form {
+			display: grid;
+			grid-template-rows: auto 200px auto auto;
+			grid-template-columns: 6em auto 6em;
+			row-gap: 0.25em;
+			&>input[name="filter"] {
+				grid-area: 1/1/2/4;
+			}
+			&>ul#commands {
+				grid-area: 2/1/3/4;
+				overflow: scroll;
+				margin: 0;
+				list-style: none;
+				padding: 0;
+				&>li {
+					padding: 0.5em 0.5em;
+					background-color: white;
+					border-bottom: thin solid #999;
+					cursor: default;
+					&>span.display-name:after {
+						content: " — "
+					}
+					&:first-of-type {
+						border-top: thin solid #999;
+					}
+					&:hover {
+						background-color: #f0f0f0;
+					}
+				}
+			}
+			&>span#command {
+				grid-area: 3/1/4/4;
+				margin: 0 0 0.5em 0;
+				display: flex;
+				&>input {
+					flex: 1;
+					padding: 0.25em 0.5em;
+					&[name="display-name"] {
+
+					}
+					&[name="name"] {
+						border: none;
+						background-color: #eee;
+						padding-left: 1em;
+					}
+				}
+			}
+			&>button[name="cancel"] {
+				grid-area: 4/1/5/2;
+			}
+			&>button[name="ok"] {
+				grid-area: 4/3/5/4;
+			}
+		}
+	}
+
+/*	TBar Context Menu (popup)
+	================================================
+	================================================ */
+
+	div#pulsar-tbar-items>div.pulsar-tbar-popup {
+		--highlight: #3478F6;
+		position: absolute;
+		display: flex;
+		flex-direction: column;
+		background: #eee;
+		border: none;
+		padding: 0;
+		outline: none;
+		z-index: 1000;
+		&>button {
+			display: none;
+			border: none;
+			padding: 0.25em 0.75em 0.5em;
+			text-align: left;
+			font-size: 1.2em;
+			width: 100%;
+			&:hover {
+				background-color: var(--highlight);
+				color: white;
+			}
+		}
+		&.show {
+			padding: 2px;
+			display: flex;
+			border: thin solid #eee;
+			box-shadow: 0 0 4px #ddd;
+			>button {
+				display: block;
+			}
+		}
+	}
+
+/*	About …
+	================================================
+	p#title
+	p
+	p
+	p
+		a href="https://github.com/manngo/pulsar-tbar">https://github.com/manngo/pulsar-tbar</a></p>
+	p
+	button name="ok" value="1">OK</button>
+	================================================ */
+
+	atom-panel-container.modal>atom-panel#ap-pulsar-tbar-about {
+		font-size: 1.2em;
+		qwidth: 24em;
+		padding: 1.5em;
+		position: fixed;
+		border: none;
+		top: 20em;
+		left: 50%;
+		box-shadow: 0px 0px 8px #999;
+		border-radius: 0.25em;
+		margin: 0;
+		&>form#pulsar-tbar-about {
+			border: thin solid #999;
+			border-radius: 0.5em;
+			box-shadow: 2px 2px 2px #ccc;
+			padding: 1em;
+			background-color: white;
+			width: 100%;
+
+			display: grid;
+			grid-template-rows: auto auto auto auto auto;
+			grid-template-columns: 6em auto 6em;
+			1row-gap: 1em;
+			&>p {
+				grid-column: 1/4;
+				&>a {
+					color: #3478F6;
+					text-decoration: none;
+					padding-bottom: 0.25em;
+					&:hover {
+						border-bottom: thin solid;
+					}
+				}
+			}
+			&>p#title {
+				font-weight: bold;
+			}
+			&>button {
+				border: none;
+				padding: 0.25em 0.5em;
+				border-radius: 0.25em;
+			}
+			&>button[name="ok"] {
+				grid-column: 3/4;
+				background-color: #0074E7;
+				color: white;
+			}
+		}
+	}
+
+/*	AddURL …
+	================================================
+	p#title
+	label
+		input[name="url"]
+	p
+	button[name="cancel"]
+	button[name="ok"]
+	================================================ */
+
+	atom-panel-container.modal>atom-panel#ap-pulsar-tbar-addurl {
+		font-size: 1.2em;
+		qwidth: 24em;
+		padding: 1.5em;
+		position: fixed;
+		border: none;
+		top: 20em;
+		left: 50%;
+		box-shadow: 0px 0px 8px #999;
+		border-radius: 0.25em;
+		margin: 0;
+		&>form#pulsar-tbar-addurl {
+			border: thin solid #999;
+			border-radius: 0.5em;
+			box-shadow: 2px 2px 2px #ccc;
+			padding: 1em;
+			background-color: white;
+			width: 100%;
+
+			display: grid;
+			grid-template-rows: auto auto auto;
+			grid-template-columns: 6em auto 6em;
+			row-gap: 0.5em;
+			&>p {
+				grid-column: 1/4;
+				&>a {
+					color: #3478F6;
+					text-decoration: none;
+					padding-bottom: 0.25em;
+					&:hover {
+						border-bottom: thin solid;
+					}
+				}
+			}
+			&>p#title {
+				font-weight: bold;
+			}
+			&>label {
+				grid-column: 1/4;
+				width: 100%;
+				margin-bottom: 1em;
+				>input[name="url"] {
+					display: block;
+					width: 100%;
+					margin-top: 0.25em;
+				}
+			}
+			&>button {
+				border: none;
+				padding: 0.25em 0.5em;
+				border-radius: 0.25em;
+			}
+			&>button[name="cancel"] {
+				grid-column: 1/2;
+			}
+			&>button[name="ok"] {
+				grid-column: 3/4;
+				background-color: #0074E7;
+				color: white;
+			}
+		}
+	}
