@@ -2,7 +2,7 @@
 
 A toolbar for Pulsar.
 
-<img src="readme/pulsar-tbar.png" alt="Screen Shot" title="Screen Shot" width="50%">
+<img src="readme/tbar.png" alt="Screen Shot" title="Screen Shot" width="50%">
 
 ##	Introduction
 
@@ -12,9 +12,9 @@ This package adds a toolbar for your favourite tools, files and web documents. I
 
 You can add your favourite tools from the __☰ Actions__ Menu:
 
-<img src="readme/actions.png" alt="Actions" title="Actions" width="12.5%">
+<img src="readme/actions.png" alt="Actions" title="Actions" width="40%">
 
-Select <kbd>Add Item …</kbd>:
+Select <kbd>Add Item …</kbd>
 
 <img src="readme/add-item.png" alt="Add Item" title="Add Item" width="40%">
 
@@ -58,13 +58,19 @@ You can then change the display name.
 
 The URL will be opened in your default browser.
 
-##	The `pulsar-tbar.json` File
+##	Adding a Menu
 
-The toolbar buttons and settings are saved in the `pulsar-tbar.json` file in your `.pulsar` directory. On the first launch, the `pulsar-tbar.json` file will contain an empty toolbar.
+TBar also supports menus in toolbar. _However_, there isn’t (yet) an interface for creating your own menu. You’ll have to hand-code one in the `tbar.json` file. There is an example in the default file.
 
-In theory, you can edit the `pulsar-tbar.json` file your self, but be careful. JSON files are very sensitive, and a small error will invalidate the file entirely.
+Sorry.
 
-If the `pulsar-tbar.json` is missing or invalid, it will be replaced by a new default file.
+##	The `tbar.json` File
+
+The toolbar buttons and settings are saved in the `tbar.json` file in your `.pulsar` directory. On the first launch, the `tbar.json` file will contain an empty toolbar.
+
+In theory, you can edit the `tbar.json` file your self, but be careful. JSON files are very sensitive, and a small error will invalidate the file entirely.
+
+If the `tbar.json` is missing or invalid, it will be replaced by a new default file.
 
 ##	Future Plans
 
@@ -73,6 +79,8 @@ The following will be implemented in the future:
 -	Toggle the toolbar
 -	Add custom menus as additional items
 -	Change orientation
+-	Tool Groups
+-	Additional tools
 
 ##	Licence
 

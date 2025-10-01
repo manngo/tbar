@@ -1,23 +1,23 @@
 /*	TBar
 	================================================
-	div#pulsar-tbar
-		div#pulsar-tbar-menu
-			button#pulsar-tbar-menu-toggle
+	div#tbar
+		div#tbar-menu
+			button.toggle
 			div
-		div#pulsar-tbar-items
-			button
+		div#tbar-items
+			button | menu
 	================================================ */
 
-	div#pulsar-tbar {
+	div#tbar {
 		--highlight: #3478F6;;
 		&>* {
 			display: inline-block;
 		}
-		&>div#pulsar-tbar-menu {
+		&>div.tbar-menu {
 			display: inline-block;
 			outline: none;
 		}
-		&>div#pulsar-tbar-items {
+		&>div#tbar-items {
 			display: inline;
 		}
 
@@ -26,9 +26,16 @@
 
 	/*	Buttons
 		================================================ */
-
 		button {
 			cursor: default;
+			&.menu:before {
+				content: "☰ ";
+				font-weight: bold;
+				font-size: 1.2em;
+				position: relative;
+				top: -0.0625em;
+				color: var(--highlight);
+			}
 			&:before { }
 			&[data-save] {
 				background-color: transparent;
@@ -68,9 +75,14 @@
 		}
 
 	/*	TBar Menu
+		================================================
+		div.tbar-menu
+			button
+			div
+				button
 		================================================ */
 
-		div#pulsar-tbar-menu {
+		div.tbar-menu {
 			display: inline-block;
 			position: relative;
 			cursor: default;
@@ -81,25 +93,38 @@
 				font-weight: bold;
 				font-size: 1.2em;
 				white-space: pre;
-				&#pulsar-tbar-menu-toggle.open+div {
-					display: block;
+				&.toggle.open {
+					&+div {
+						display: block;
+					}
+					&.alt+div {
+						button, hr {
+							display: block;
+						}
+					}
 				}
 			}
 			&>div {
 				background: white;
 				position: absolute;
+qposition: relative;
 				z-index: 100;
 				border: thin solid #ccc;
 				box-shadow: 1px 1px 2px #999;
 				display: none;
+qdisplay: block;
 				cursor: default;
 				font-size: 1.1em;
 
 	/*	TBar Menu Items
 		================================================ */
-
+				button.option, hr.option {
+					display: none;
+				}
+				&.open {
+					border: thick solid red;
+				}
 				&>button {
-					qwidth: 8em;
 					width: 100%;
 					background: white;
 					border: none;
@@ -114,22 +139,21 @@
 					}
 				}
 				&>hr {
-					height: 0.5em;
 					text-align: center;
 					cursor: default;
 					border-top: thin solid #ccc;
-					qheight: 2px;
+					height: 2px;
 					margin: 0.375em 0.5em 0.125em;
 				}
 			}
 		}
-
 	}
+
 
 /*	Finder
 	================================================
 	atom-panel
-		div#pulsar-tbar-finder.native-key-bindings
+		div#tbar-finder.native-key-bindings
 			form
 				input[name="filter"][type="text"]
 				ul#commands
@@ -141,7 +165,7 @@
 				button[name="ok"]
 	================================================ */
 
-	div#pulsar-tbar-finder {
+	div#tbar-finder {
 		background-color: #eee;
 		&>form {
 			display: grid;
@@ -203,7 +227,7 @@
 	================================================
 	================================================ */
 
-	div#pulsar-tbar-items>div.pulsar-tbar-popup {
+	div#tbar-items>div.tbar-popup {
 		--highlight: #3478F6;
 		position: absolute;
 		display: flex;
@@ -242,12 +266,12 @@
 	p
 	p
 	p
-		a href="https://github.com/manngo/pulsar-tbar">https://github.com/manngo/pulsar-tbar</a></p>
+		a href="https://github.com/manngo/tbar">https://github.com/manngo/tbar</a></p>
 	p
 	button name="ok" value="1">OK</button>
 	================================================ */
 
-	atom-panel-container.modal>atom-panel#ap-pulsar-tbar-about {
+	atom-panel-container.modal>atom-panel#ap-tbar-about {
 		font-size: 1.2em;
 		qwidth: 24em;
 		padding: 1.5em;
@@ -258,7 +282,7 @@
 		box-shadow: 0px 0px 8px #999;
 		border-radius: 0.25em;
 		margin: 0;
-		&>form#pulsar-tbar-about {
+		&>form#tbar-about {
 			border: thin solid #999;
 			border-radius: 0.5em;
 			box-shadow: 2px 2px 2px #ccc;
@@ -269,9 +293,10 @@
 			display: grid;
 			grid-template-rows: auto auto auto auto auto;
 			grid-template-columns: 6em auto 6em;
-			1row-gap: 1em;
+			row-gap: 0.5em;
 			&>p {
 				grid-column: 1/4;
+				margin: 0;
 				&>a {
 					color: #3478F6;
 					text-decoration: none;
@@ -307,7 +332,7 @@
 	button[name="ok"]
 	================================================ */
 
-	atom-panel-container.modal>atom-panel#ap-pulsar-tbar-addurl {
+	atom-panel-container.modal>atom-panel#ap-tbar-addurl {
 		font-size: 1.2em;
 		qwidth: 24em;
 		padding: 1.5em;
@@ -318,7 +343,7 @@
 		box-shadow: 0px 0px 8px #999;
 		border-radius: 0.25em;
 		margin: 0;
-		&>form#pulsar-tbar-addurl {
+		&>form#tbar-addurl {
 			border: thin solid #999;
 			border-radius: 0.5em;
 			box-shadow: 2px 2px 2px #ccc;

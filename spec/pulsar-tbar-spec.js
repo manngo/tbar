@@ -1,6 +1,6 @@
 'use babel';
 
-import PulsarTbar from '../lib/pulsar-tbar';
+import PulsarTbar from '../lib/tbar';
 
 // Use the command `window:run-package-specs` (cmd-alt-ctrl-p) to run specs.
 //
@@ -12,32 +12,32 @@ describe('PulsarTbar', () => {
 
   beforeEach(() => {
     workspaceElement = atom.views.getView(atom.workspace);
-    activationPromise = atom.packages.activatePackage('pulsar-tbar');
+    activationPromise = atom.packages.activatePackage('tbar');
   });
 
-  describe('when the pulsar-tbar:toggle event is triggered', () => {
+  describe('when the tbar:toggle event is triggered', () => {
     it('hides and shows the modal panel', () => {
       // Before the activation event the view is not on the DOM, and no panel
       // has been created
-      expect(workspaceElement.querySelector('.pulsar-tbar')).not.toExist();
+      expect(workspaceElement.querySelector('.tbar')).not.toExist();
 
       // This is an activation event, triggering it will cause the package to be
       // activated.
-      atom.commands.dispatch(workspaceElement, 'pulsar-tbar:toggle');
+      atom.commands.dispatch(workspaceElement, 'tbar:toggle');
 
       waitsForPromise(() => {
         return activationPromise;
       });
 
       runs(() => {
-        expect(workspaceElement.querySelector('.pulsar-tbar')).toExist();
+        expect(workspaceElement.querySelector('.tbar')).toExist();
 
-        let pulsarTbarElement = workspaceElement.querySelector('.pulsar-tbar');
+        let pulsarTbarElement = workspaceElement.querySelector('.tbar');
         expect(pulsarTbarElement).toExist();
 
         let pulsarTbarPanel = atom.workspace.panelForItem(pulsarTbarElement);
         expect(pulsarTbarPanel.isVisible()).toBe(true);
-        atom.commands.dispatch(workspaceElement, 'pulsar-tbar:toggle');
+        atom.commands.dispatch(workspaceElement, 'tbar:toggle');
         expect(pulsarTbarPanel.isVisible()).toBe(false);
       });
     });
@@ -51,11 +51,11 @@ describe('PulsarTbar', () => {
       // workspaceElement to the DOM are generally slower than those off DOM.
       jasmine.attachToDOM(workspaceElement);
 
-      expect(workspaceElement.querySelector('.pulsar-tbar')).not.toExist();
+      expect(workspaceElement.querySelector('.tbar')).not.toExist();
 
       // This is an activation event, triggering it causes the package to be
       // activated.
-      atom.commands.dispatch(workspaceElement, 'pulsar-tbar:toggle');
+      atom.commands.dispatch(workspaceElement, 'tbar:toggle');
 
       waitsForPromise(() => {
         return activationPromise;
@@ -63,9 +63,9 @@ describe('PulsarTbar', () => {
 
       runs(() => {
         // Now we can test for view visibility
-        let pulsarTbarElement = workspaceElement.querySelector('.pulsar-tbar');
+        let pulsarTbarElement = workspaceElement.querySelector('.tbar');
         expect(pulsarTbarElement).toBeVisible();
-        atom.commands.dispatch(workspaceElement, 'pulsar-tbar:toggle');
+        atom.commands.dispatch(workspaceElement, 'tbar:toggle');
         expect(pulsarTbarElement).not.toBeVisible();
       });
     });

@@ -1,5 +1,5 @@
 {
   "atom-workspace": {
-    "ctrl-alt-o": "pulsar-tbar:toggle"
+    "ctrl-alt-o": "tbar:toggle"
   }
 }

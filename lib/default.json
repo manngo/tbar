@@ -9,6 +9,27 @@
 			"label": "Internotes",
 			"action": "https://internotes.net/",
 			"tooltip": "Open https://internotes.net/"
+		},
+		{
+			"label": "Soft Wrap",
+			"action": "editor:toggle-soft-wrap",
+			"tooltip": "editor:toggle-soft-wrap"
+		},
+		{
+			"label": "Case",
+			"menu": [
+				{
+					"label": "lower case",
+					"action": "editor:lower-case",
+					"tooltip": "editor:lower-case"
+				},
+				{
+					"label": "UPPER CASE",
+					"action": "editor:upper-case",
+					"tooltip": "editor:upper-case"
+				}
+			],
+			"tooltip": "Change Case"
 		}
 	]
 }

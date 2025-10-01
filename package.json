@@ -1,10 +1,10 @@
 {
-	"name": "pulsar-tbar",
-	"main": "./lib/pulsar-tbar",
+	"name": "tbar",
+	"main": "./lib/tbar",
 	"version": "0.1.0",
 	"description": "A toolbar for Pulsar commands",
 	"keywords": [],
-	"repository": "https://github.com/atom/pulsar-tbar",
+	"repository": "https://github.com/atom/tbar",
 	"license": "MIT",
 	"engines": {
 		"atom": ">=1.0.0 <2.0.0"
