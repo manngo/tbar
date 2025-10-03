@@ -1,8 +1,8 @@
 'use babel';
 
-import PulsarTbarView from '../lib/tbar-view';
+import TbarView from '../lib/tbar-view';
 
-describe('PulsarTbarView', () => {
+describe('TbarView', () => {
   it('has one valid test', () => {
     expect('life').toBe('easy');
   });

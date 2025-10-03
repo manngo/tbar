@@ -1,13 +1,13 @@
 'use babel';
 
-import PulsarTbar from '../lib/tbar';
+import Tbar from '../lib/tbar';
 
 // Use the command `window:run-package-specs` (cmd-alt-ctrl-p) to run specs.
 //
 // To run a specific `it` or `describe` block add an `f` to the front (e.g. `fit`
 // or `fdescribe`). Remove the `f` to unfocus the block.
 
-describe('PulsarTbar', () => {
+describe('Tbar', () => {
   let workspaceElement, activationPromise;
 
   beforeEach(() => {
@@ -32,13 +32,13 @@ describe('PulsarTbar', () => {
       runs(() => {
         expect(workspaceElement.querySelector('.tbar')).toExist();
 
-        let pulsarTbarElement = workspaceElement.querySelector('.tbar');
-        expect(pulsarTbarElement).toExist();
+		let tbarElement = workspaceElement.querySelector('.tbar');
+		expect(tbarElement).toExist();
 
-        let pulsarTbarPanel = atom.workspace.panelForItem(pulsarTbarElement);
-        expect(pulsarTbarPanel.isVisible()).toBe(true);
+		let tbarPanel = atom.workspace.panelForItem(tbarElement);
+		expect(tbarPanel.isVisible()).toBe(true);
         atom.commands.dispatch(workspaceElement, 'tbar:toggle');
-        expect(pulsarTbarPanel.isVisible()).toBe(false);
+		expect(tbarPanel.isVisible()).toBe(false);
       });
     });
 
@@ -63,10 +63,10 @@ describe('PulsarTbar', () => {
 
       runs(() => {
         // Now we can test for view visibility
-        let pulsarTbarElement = workspaceElement.querySelector('.tbar');
-        expect(pulsarTbarElement).toBeVisible();
+		let tbarElement = workspaceElement.querySelector('.tbar');
+		expect(tbarElement).toBeVisible();
         atom.commands.dispatch(workspaceElement, 'tbar:toggle');
-        expect(pulsarTbarElement).not.toBeVisible();
+		expect(tbarElement).not.toBeVisible();
       });
     });
   });

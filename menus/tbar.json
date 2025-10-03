@@ -2,7 +2,7 @@
   "context-menu": {
     "atom-text-editor": [
       {
-		"label": "Toggle Pulsar TBar",
+		"label": "Toggle TBar",
         "command": "tbar:toggle"
       }
     ]
@@ -12,10 +12,10 @@
       "label": "Packages",
       "submenu": [
         {
-		  "label": "Pulsar TBar",
+		  "label": "TBar",
           "submenu": [
             {
-              "label": "Toggle Pulsar TBar",
+              "label": "Toggle TBar",
               "command": "tbar:toggle"
             }
           ]

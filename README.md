@@ -1,4 +1,4 @@
-# Pulsar TBar
+# TBar
 
 A toolbar for Pulsar.
 
@@ -7,6 +7,8 @@ A toolbar for Pulsar.
 ##	Introduction
 
 This package adds a toolbar for your favourite tools, files and web documents. It is inspired by [command-toolbar](https://github.com/mark-hahn/command-toolbar) by Mark Hahn.
+
+The toolbar may not (yet) be visible. If it’s not, you can show the toolbar using the <kbd>Toggle</kbd> from the Packages menu.
 
 ##	Adding Tools
 
@@ -33,7 +35,7 @@ If you right-click on an item:
 You can:
 
 -	Remove and item — this deletes it permanently from your toolbar.
--	Edit — you can change the display name of the toolbar item.
+-	Rename — you can change the display name of the toolbar item.
 
 You can also rearrange your toolbar items by dragging them around.
 
@@ -60,7 +62,9 @@ The URL will be opened in your default browser.
 
 ##	Adding a Menu
 
-TBar also supports menus in toolbar. _However_, there isn’t (yet) an interface for creating your own menu. You’ll have to hand-code one in the `tbar.json` file. There is an example in the default file.
+TBar also supports menus in toolbar. _However_, there isn’t (yet) an interface for creating your own menu. You’ll have to hand-code one in the `tbar.json` file.
+
+There is an example in the default file.
 
 Sorry.
 
@@ -76,7 +80,6 @@ If the `tbar.json` is missing or invalid, it will be replaced by a new default f
 
 The following will be implemented in the future:
 
--	Toggle the toolbar
 -	Add custom menus as additional items
 -	Change orientation
 -	Tool Groups
@@ -84,6 +87,6 @@ The following will be implemented in the future:
 
 ##	Licence
 
-Pulsar TBar is copyright © Mark Simon, with the MIT licence.
+TBar is copyright © Mark Simon, with the MIT licence.
 
 E & OE. This package does what it does and doesn’t what it doesn’t. Share & Enjoy.

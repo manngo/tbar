@@ -24,6 +24,11 @@
 		background-color: #ddd;
 		padding: 2px 0 4px;
 
+		div#tbar-main-menu>button {
+			color: var(--highlight);
+			text-transform: uppercase;
+		}
+
 	/*	Buttons
 		================================================ */
 		button {
@@ -96,6 +101,7 @@
 				&.toggle.open {
 					&+div {
 						display: block;
+						max-width: 16em;
 					}
 					&.alt+div {
 						button, hr {
@@ -107,6 +113,8 @@
 			&>div {
 				background: white;
 				position: absolute;
+
+				max-width: 16em;
 qposition: relative;
 				z-index: 100;
 				border: thin solid #ccc;
@@ -149,11 +157,10 @@ qdisplay: block;
 		}
 	}
 
-
-/*	Finder
+/*	Command Panel
 	================================================
 	atom-panel
-		div#tbar-finder.native-key-bindings
+		div#tbar-command-panel.native-key-bindings
 			form
 				input[name="filter"][type="text"]
 				ul#commands
@@ -165,7 +172,7 @@ qdisplay: block;
 				button[name="ok"]
 	================================================ */
 
-	div#tbar-finder {
+	div#tbar-command-panel {
 		background-color: #eee;
 		&>form {
 			display: grid;
@@ -227,34 +234,40 @@ qdisplay: block;
 	================================================
 	================================================ */
 
-	div#tbar-items>div.tbar-popup {
+	div#tbar-items>div.popup {
 		--highlight: #3478F6;
 		position: absolute;
 		display: flex;
 		flex-direction: column;
 		background: #eee;
 		border: none;
+		border: thin solid #999;
+		box-shadow: 0 0 2px #ccc;
 		padding: 0;
 		outline: none;
 		z-index: 1000;
-		&>button {
+		&>div {
 			display: none;
-			border: none;
-			padding: 0.25em 0.75em 0.5em;
-			text-align: left;
-			font-size: 1.2em;
-			width: 100%;
-			&:hover {
-				background-color: var(--highlight);
-				color: white;
+			flex-direction: column;
+			button {
+				display: none;
+				border: none;
+				padding: 0.25em 0.75em 0.5em;
+				text-align: left;
+				font-size: 1.2em;
+				width: 100%;
+				&:hover, &.hover {
+					background-color: var(--highlight);
+					color: white;
+				}
 			}
 		}
-		&.show {
-			padding: 2px;
+		&.open>div {
 			display: flex;
+			padding: 2px;
 			border: thin solid #eee;
 			box-shadow: 0 0 4px #ddd;
-			>button {
+			button {
 				display: block;
 			}
 		}
