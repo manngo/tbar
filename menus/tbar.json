@@ -1,26 +1,26 @@
 {
-  "context-menu": {
-    "atom-text-editor": [
-      {
+	"context-menu": {
+		"atom-text-editor": [
+			{
 		"label": "Toggle TBar",
-        "command": "tbar:toggle"
-      }
-    ]
-  },
-  "menu": [
-    {
-      "label": "Packages",
-      "submenu": [
-        {
-		  "label": "TBar",
-          "submenu": [
-            {
-              "label": "Toggle TBar",
-              "command": "tbar:toggle"
-            }
-          ]
-        }
-      ]
-    }
-  ]
+				"command": "tbar:toggle"
+			}
+		]
+	},
+	"menu": [
+		{
+			"label": "Packages",
+			"submenu": [
+				{
+			"label": "TBar",
+					"submenu": [
+						{
+							"label": "Toggle TBar",
+							"command": "tbar:toggle"
+						}
+					]
+				}
+			]
+		}
+	]
 }

@@ -1,6 +1,6 @@
 {
 	"name": "tbar",
-	"main": "./lib/tbar",
+	"main": "./lib/main",
 	"version": "0.1.0",
 	"description": "A toolbar for Pulsar commands",
 	"keywords": [],
@@ -9,5 +9,19 @@
 	"engines": {
 		"atom": ">=1.0.0 <2.0.0"
 	},
-	"dependencies": {}
+	"dependencies": {},
+	"consumedServices": {
+		"export-text-tools-menu": {
+			"description": "Gets a Menu",
+			"versions": {
+				"1.0.0": "importTextToolsMenu"
+			}
+		},
+		"export-html-tools-menu": {
+			"description": "Gets a Menu",
+			"versions": {
+				"1.0.0": "importHTMLToolsMenu"
+			}
+		}
+	}
 }

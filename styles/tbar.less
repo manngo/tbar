@@ -9,15 +9,15 @@
 	================================================ */
 
 	div#tbar {
-		--highlight: #3478F6;;
+		--highlight: #3478F6;
 		&>* {
 			display: inline-block;
 		}
-		&>div.tbar-menu {
+		div.tbar-menu {
 			display: inline-block;
 			outline: none;
 		}
-		&>div#tbar-items {
+		div#tbar-items {
 			display: inline;
 		}
 
@@ -33,6 +33,11 @@
 		================================================ */
 		button {
 			cursor: default;
+			background-color: transparent;
+			border: none;
+			margin: 1px 0px;
+			padding: 2px 8px;
+			white-space: nowrap;
 			&.menu:before {
 				content: "☰ ";
 				font-weight: bold;
@@ -41,13 +46,9 @@
 				top: -0.0625em;
 				color: var(--highlight);
 			}
+
 			&:before { }
 			&[data-save] {
-				background-color: transparent;
-				border: none;
-				margin: 1px 0px;
-				padding: 2px 8px;
-				white-space: nowrap;
 				&:not(:last-of-type) {
 					border-right: thin solid #999;
 				}
@@ -88,6 +89,48 @@
 		================================================ */
 
 		div.tbar-menu {
+			div {
+				div {
+					position: relative;
+					qwidth: 20em;
+					button.menu {
+						display: grid;
+						grid-template-columns: auto 1fr auto;
+						qline-height: 1;
+						width: 100%;
+						text-align: left;
+						&:before {
+							top: -0.125em;
+							margin-right: 0.25em;
+						}
+						&:after {
+							grid-column: 3/4;
+							content: "\A0›";
+							position: relative;
+							font-size: 1.75em;
+							top: 0.35em;
+							line-height: 0;
+						}
+					}
+					div {
+						display: none;
+						position: absolute;
+						left: 100%;
+						top: 0;
+						qmax-width: 16em;
+						border: thin solid #ccc;
+						box-shadow: 1px 1px 2px #999;
+						background-color: white;
+qdisplay: block;
+					}
+					&:hover>div {
+						display: block;
+					}
+				}
+			}
+		}
+
+		div.tbar-menu {
 			display: inline-block;
 			position: relative;
 			cursor: default;
@@ -101,7 +144,7 @@
 				&.toggle.open {
 					&+div {
 						display: block;
-						max-width: 16em;
+						qmax-width: 16em;
 					}
 					&.alt+div {
 						button, hr {
@@ -110,19 +153,24 @@
 					}
 				}
 			}
+			&:nth-of-type(5)>div {
+				qposition: relative !important;
+				qdisplay: block !important;
+				qborder: thick solid red !important;
+			}
+
 			&>div {
 				background: white;
 				position: absolute;
 
-				max-width: 16em;
-qposition: relative;
+				qmax-width: 16em;
 				z-index: 100;
 				border: thin solid #ccc;
 				box-shadow: 1px 1px 2px #999;
 				display: none;
-qdisplay: block;
 				cursor: default;
 				font-size: 1.1em;
+
 
 	/*	TBar Menu Items
 		================================================ */
@@ -132,8 +180,9 @@ qdisplay: block;
 				&.open {
 					border: thick solid red;
 				}
-				&>button {
+				& button {
 					width: 100%;
+					display: block;
 					background: white;
 					border: none;
 					text-align: left;
@@ -273,137 +322,103 @@ qdisplay: block;
 		}
 	}
 
-/*	About …
-	================================================
-	p#title
-	p
-	p
-	p
-		a href="https://github.com/manngo/tbar">https://github.com/manngo/tbar</a></p>
-	p
-	button name="ok" value="1">OK</button>
-	================================================ */
 
-	atom-panel-container.modal>atom-panel#ap-tbar-about {
-		font-size: 1.2em;
-		qwidth: 24em;
-		padding: 1.5em;
-		position: fixed;
-		border: none;
-		top: 20em;
-		left: 50%;
-		box-shadow: 0px 0px 8px #999;
-		border-radius: 0.25em;
-		margin: 0;
-		&>form#tbar-about {
-			border: thin solid #999;
-			border-radius: 0.5em;
-			box-shadow: 2px 2px 2px #ccc;
-			padding: 1em;
-			background-color: white;
-			width: 100%;
+	atom-panel-container.modal {
+	/*	About …
+		================================================
+		p#title
+		p
+		p
+		p
+			a href="https://github.com/manngo/tbar">https://github.com/manngo/tbar</a></p>
+		p
+		button name="ok" value="1">OK</button>
+		================================================ */
 
-			display: grid;
-			grid-template-rows: auto auto auto auto auto;
-			grid-template-columns: 6em auto 6em;
-			row-gap: 0.5em;
-			&>p {
-				grid-column: 1/4;
-				margin: 0;
-				&>a {
-					color: #3478F6;
-					text-decoration: none;
-					padding-bottom: 0.25em;
-					&:hover {
-						border-bottom: thin solid;
+		qatom-panel#ap-tbar-about,
+		qatom-panel#ap-tbar-addurl,
+		atom-panel.ap-tbar-dialog {
+			font-size: 1.2em;
+			padding: 1.5em;
+			position: fixed;
+			border: none;
+			top: 20em;
+			left: 50%;
+			box-shadow: 0px 0px 8px #999;
+			border-radius: 0.25em;
+			margin: 0;
+
+			form.tbar-dialog {
+				--highlight-color: #3478F6;
+				border: thin solid #999;
+				border-radius: 0.5em;
+				box-shadow: 2px 2px 2px #ccc;
+				padding: 1em;
+				background-color: white;
+				width: 100%;
+
+				display: grid;
+				grid-template-columns: 6em auto 6em;
+				row-gap: 0.5em;
+				p {
+					grid-column: 1/4;
+					margin: 0;
+					a {
+						color: var(--highlight-color);
+						text-decoration: none;
+						padding-bottom: 0.25em;
+						&:hover {
+							border-bottom: thin solid;
+						}
+					}
+					&#title {
+						font-weight: bold;
 					}
 				}
-			}
-			&>p#title {
-				font-weight: bold;
-			}
-			&>button {
-				border: none;
-				padding: 0.25em 0.5em;
-				border-radius: 0.25em;
-			}
-			&>button[name="ok"] {
-				grid-column: 3/4;
-				background-color: #0074E7;
-				color: white;
+				&>label {
+					grid-column: 1/4;
+					width: 100%;
+					margin-bottom: 1em;
+					>input[name="url"] {
+						display: block;
+						width: 100%;
+						margin-top: 0.25em;
+					}
+				}
+				button {
+					border: none;
+					padding: 0.25em 0.5em;
+					border-radius: 0.25em;
+					&[name="cancel"] {
+						grid-column: 1/2;
+					}
+					&[name="ok"] {
+						grid-column: 3/4;
+						background-color: #0074E7;
+						color: white;
+					}
+				}
+
 			}
 		}
-	}
 
-/*	AddURL …
-	================================================
-	p#title
-	label
-		input[name="url"]
-	p
-	button[name="cancel"]
-	button[name="ok"]
-	================================================ */
-
-	atom-panel-container.modal>atom-panel#ap-tbar-addurl {
-		font-size: 1.2em;
-		qwidth: 24em;
-		padding: 1.5em;
-		position: fixed;
-		border: none;
-		top: 20em;
-		left: 50%;
-		box-shadow: 0px 0px 8px #999;
-		border-radius: 0.25em;
-		margin: 0;
-		&>form#tbar-addurl {
-			border: thin solid #999;
-			border-radius: 0.5em;
-			box-shadow: 2px 2px 2px #ccc;
-			padding: 1em;
-			background-color: white;
-			width: 100%;
-
-			display: grid;
-			grid-template-rows: auto auto auto;
-			grid-template-columns: 6em auto 6em;
-			row-gap: 0.5em;
-			&>p {
-				grid-column: 1/4;
-				&>a {
-					color: #3478F6;
-					text-decoration: none;
-					padding-bottom: 0.25em;
-					&:hover {
-						border-bottom: thin solid;
-					}
-				}
+		atom-panel#ap-tbar-about {
+			form#tbar-about {
+				grid-template-rows: auto auto auto auto auto;
 			}
-			&>p#title {
-				font-weight: bold;
-			}
-			&>label {
-				grid-column: 1/4;
-				width: 100%;
-				margin-bottom: 1em;
-				>input[name="url"] {
-					display: block;
-					width: 100%;
-					margin-top: 0.25em;
-				}
-			}
-			&>button {
-				border: none;
-				padding: 0.25em 0.5em;
-				border-radius: 0.25em;
-			}
-			&>button[name="cancel"] {
-				grid-column: 1/2;
-			}
-			&>button[name="ok"] {
-				grid-column: 3/4;
-				background-color: #0074E7;
-				color: white;
+		}
+	/*	AddURL …
+		================================================
+		p#title
+		label
+			input[name="url"]
+		p
+		button[name="cancel"]
+		button[name="ok"]
+		================================================ */
+		atom-panel#ap-tbar-addurl {
+			form#tbar-addurl {
+				grid-template-rows: auto auto auto;
 			}
 		}
 	}
